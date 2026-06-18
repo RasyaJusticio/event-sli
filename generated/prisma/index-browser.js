@@ -121,10 +121,21 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.PostScalarFieldEnum = {
+exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  message: 'message',
+  status: 'status',
+  rejectReason: 'rejectReason',
   createdAt: 'createdAt',
+  reviewedAt: 'reviewedAt',
+  shownAt: 'shownAt'
+};
+
+exports.Prisma.RotationStateScalarFieldEnum = {
+  id: 'id',
+  currentCommentId: 'currentCommentId',
+  displayUntil: 'displayUntil',
   updatedAt: 'updatedAt'
 };
 
@@ -138,9 +149,20 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.CommentStatus = exports.$Enums.CommentStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  SHOWN: 'SHOWN'
+};
 
 exports.Prisma.ModelName = {
-  Post: 'Post'
+  Comment: 'Comment',
+  RotationState: 'RotationState'
 };
 
 /**

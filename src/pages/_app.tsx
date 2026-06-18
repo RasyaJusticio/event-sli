@@ -6,15 +6,15 @@ import { api } from "@/utils/api";
 import "@/styles/globals.css";
 
 const geist = Geist({
-  subsets: ["latin"],
+	subsets: ["latin"],
 });
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  return (
-    <div className={geist.className}>
-      <Component {...pageProps} />
-    </div>
-  );
+	return (
+		<div className={geist.className}>
+			<Component {...pageProps} />
+		</div>
+	);
 };
 
 export default api.withTRPC(MyApp);
