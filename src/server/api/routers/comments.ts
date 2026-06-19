@@ -48,7 +48,10 @@ async function advanceRotation(db: PrismaClient) {
 		}),
 	]);
 
-	return { comment: next, displayUntil };
+	return {
+		comment: next,
+		displayUntil,
+	};
 }
 
 // ─── Router ───────────────────────────────────────────────────────────────────
