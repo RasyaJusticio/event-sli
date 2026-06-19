@@ -6,6 +6,7 @@ import { api } from "@/utils/api";
 import { sunlifeND } from "@/fonts/Sunlife-ND/Sunlife-ND";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { ROTATION_SECONDS } from "@/utils/constants";
 
 export default function LEDMain() {
 	const { data } = api.comments.wallCurrent.useQuery(undefined, {
@@ -25,6 +26,9 @@ export default function LEDMain() {
 	const [animKey, setAnimKey] = useState(0);
 	const prevIdRef = useRef<string | null>(null);
 
+	const [progress, setProgress] = useState(100);
+	const progressRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
 	useEffect(() => {
 		if (!data?.comment) return;
 		// Only trigger transition when the comment actually changes
@@ -35,6 +39,33 @@ export default function LEDMain() {
 		// Bump key to remount the element and restart the animation
 		setAnimKey((k) => k + 1);
 	}, [data?.comment]);
+
+	useEffect(() => {
+		if (!data?.displayUntil) return;
+
+		// Clear any existing interval
+		if (progressRef.current) clearInterval(progressRef.current);
+
+		const end = new Date(data.displayUntil).getTime();
+
+		// Recalculate total duration from when we first got this displayUntil
+		// We don't know the exact start, so approximate from ROTATION_SECONDS
+		const total = ROTATION_SECONDS * 1000;
+
+		progressRef.current = setInterval(() => {
+			const remaining = end - Date.now();
+			const pct = Math.max(0, Math.min(100, (remaining / total) * 100));
+			setProgress(pct);
+
+			if (remaining <= 0) {
+				clearInterval(progressRef.current!);
+			}
+		}, 50); // 50ms = smooth enough without being expensive
+
+		return () => {
+			if (progressRef.current) clearInterval(progressRef.current);
+		};
+	}, [data?.displayUntil]);
 
 	return (
 		<BaseLayout className="pt-32">
@@ -89,6 +120,13 @@ export default function LEDMain() {
 					alt=""
 					width={340}
 					height={102}
+				/>
+			</div>
+
+			<div className="fixed bottom-0 inset-x-0 h-3 bg-black/10 shadow-xl">
+				<div
+					className="h-full bg-primary transition-none"
+					style={{ width: `${progress}%` }}
 				/>
 			</div>
 		</BaseLayout>
