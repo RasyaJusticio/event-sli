@@ -9,6 +9,8 @@ import {
 	submitCommentSchema,
 } from "@/schemas/comments";
 import { api } from "@/utils/api";
+import Button from "@/components/ui/button";
+import Image from "next/image";
 
 export default function Home() {
 	const submitComment = api.comments.submit.useMutation();
@@ -33,7 +35,32 @@ export default function Home() {
 				<link href="/favicon.ico" rel="icon" />
 			</Head>
 
-			<div className="flex flex-col items-center justify-center gap-2">
+			<div className="flex flex-col items-center justify-center gap-2 max-w-lg">
+				<div className="flex w-full justify-between gap-20">
+					<Image
+						alt=""
+						className="h-fit w-full"
+						height={97}
+						src={"/assets/images/logo-sunlife.png"}
+						width={336}
+					/>
+					<Image
+						alt=""
+						className="h-fit w-full"
+						height={102}
+						src={"/assets/images/logo-bank-muamalat.png"}
+						width={340}
+					/>
+				</div>
+
+				<Image
+					alt=""
+					className="mb-4"
+					height={130}
+					src={"/assets/images/logo-barakah-light.png"}
+					width={320}
+				/>
+
 				<h1 className="font-bold text-2xl">Kirim Pesan</h1>
 
 				<p className="text-center">
@@ -76,13 +103,9 @@ export default function Home() {
 						Setiap pesan harus melalui proses review sebelum bisa ditampilkan di
 						layar
 					</p>
-					<button
-						className="cursor-pointer rounded-lg bg-gradient-to-r bg-primary from-primary to-primary-2 px-4 py-3 font-bold text-white uppercase tracking-wider shadow transition-all hover:brightness-95 active:scale-95"
-						disabled={submitComment.isPending}
-						type="submit"
-					>
+					<Button loading={submitComment.isPending} type="submit">
 						Kirim
-					</button>
+					</Button>
 				</form>
 			</div>
 		</BaseLayout>
