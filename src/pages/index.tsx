@@ -121,7 +121,7 @@ export default function Home() {
 
 			<div
 				className={cn(
-					"fixed inset-0 z-20 flex justify-center items-center bg-black/60 opacity-0  transition-opacity",
+					"fixed inset-0 z-20 flex justify-center items-center bg-black/60 opacity-0 px-4 transition-opacity",
 					isDialogOpen
 						? "pointer-events-auto opacity-100"
 						: "pointer-events-none",
