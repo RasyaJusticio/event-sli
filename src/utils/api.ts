@@ -11,9 +11,9 @@ import superjson from "superjson";
 
 import type { AppRouter } from "@/server/api/root";
 
-function getAdminToken(): string {
+function getToken(): string {
 	if (typeof window === "undefined") return "";
-	return localStorage.getItem("admin_token") ?? "";
+	return localStorage.getItem("token") ?? "";
 }
 
 const getBaseUrl = () => {
@@ -47,7 +47,7 @@ export const api = createTRPCNext<AppRouter>({
 					url: `${getBaseUrl()}/api/trpc`,
 
 					headers() {
-						const token = getAdminToken();
+						const token = getToken();
 						return token ? { Authorization: `Bearer ${token}` } : {};
 					},
 				}),
