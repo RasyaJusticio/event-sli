@@ -8,10 +8,12 @@
  */
 import { initTRPC, TRPCError } from "@trpc/server";
 import type { CreateNextContextOptions } from "@trpc/server/adapters/next";
+import jwt from "jsonwebtoken";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
 import { db } from "@/server/db";
+import { env } from "@/env";
 
 /**
  * 1. CONTEXT
@@ -39,7 +41,7 @@ const createInnerTRPCContext = (opts: CreateContextOptions) => {
 
 	return {
 		db,
-		adminToken: token,
+		token,
 	};
 };
 
@@ -120,9 +122,18 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
 });
 
 const isAdminMiddleware = t.middleware(({ ctx, next }) => {
-	if (!ctx.adminToken || ctx.adminToken !== process.env.ADMIN_SECRET) {
+	if (!ctx.token) {
 		throw new TRPCError({ code: "UNAUTHORIZED" });
 	}
+
+	try {
+		jwt.verify(ctx.token, env.JWT_SECRET);
+	} catch {
+		throw new TRPCError({
+			code: "UNAUTHORIZED",
+		});
+	}
+
 	return next({ ctx });
 });
 
