@@ -14,15 +14,20 @@ const BaseLayout: React.FC<Props> = ({ className, children }) => {
 			>
 				{children}
 			</main>
-			<div>
-				<Image
-					className="fixed inset-0 -z-10"
-					src={"/assets/images/plain-background.png"}
-					alt=""
-					width={2560}
-					height={1280}
-				/>
-			</div>
+			<Image
+				className="fixed top-0 left-0 h-full w-full object-cover -z-10 hidden sm:block"
+				src={"/assets/images/plain-background.png"}
+				alt=""
+				width={2560}
+				height={1280}
+			/>
+			<Image
+				className="fixed top-0 left-0 h-full w-full object-cover -z-10 sm:hidden"
+				src={"/assets/images/plain-background-vert.png"}
+				alt=""
+				width={2560}
+				height={1280}
+			/>
 		</>
 	);
 };

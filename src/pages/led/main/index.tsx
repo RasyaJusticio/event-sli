@@ -45,11 +45,11 @@ export default function LEDMain() {
 						</>
 					)}
 					<h2
-						className={`text-center text-3xl font-extrabold text-primary [text-shadow:1px_1px_1px_rgba(0,0,0,0.5),-1px_-1px_1px_rgba(0,0,0,0.5)] ${sunlifeND.className}`}
+						className={`text-center text-4xl font-extrabold text-primary [text-shadow:1px_1px_1px_rgba(0,0,0,0.5),-1px_-1px_1px_rgba(0,0,0,0.5)] ${sunlifeND.className}`}
 					>
 						Lorem Ipsum
 					</h2>
-					<p className="text-center text-4xl uppercase">
+					<p className="text-center text-6xl uppercase">
 						{
 							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur est at lacinia cursus. Nulla ac congue lacus. Duis non tortor malesuada, imperdiet justo at, euismod libero. Fusce laoreet nulla quis neque feugiat, sed commodo felis faucibus. Vestibulum venenatis porttitor arcu. "
 						}
