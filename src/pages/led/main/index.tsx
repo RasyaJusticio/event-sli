@@ -87,26 +87,34 @@ export default function LEDMain() {
       `}</style>
 
 			<div>
-				<div className="mx-auto flex max-w-1/2 flex-col items-center justify-center gap-12">
+				<div className="mx-auto flex max-w-1/2 -mt-28 flex-col items-center justify-center gap-12">
 					{displayed ? (
 						<div
-							className="comment-enter flex flex-col items-center gap-12"
+							className="comment-enter flex flex-col items-center gap-8"
 							key={animKey}
 						>
 							<h2
-								className={`text-center font-extrabold text-5xl text-primary shadow-primary [text-shadow:-2px_0px_1px_rgba(0,0,0,0.6),0_0_2px_] ${sunlifeND.className}`}
+								className={`text-center font-extrabold text-4xl text-primary shadow-primary [text-shadow:-2px_0px_1px_rgba(0,0,0,0.6),0_0_2px_] ${sunlifeND.className}`}
 							>
 								{displayed.name}
 							</h2>
-							<p className="text-center text-6xl uppercase">
-								{displayed.message}
-							</p>
+							<p className="text-center text-6xl">{displayed.message}</p>
 						</div>
-					) : null}
+					) : (
+						<div>
+							<Image
+								alt=""
+								className="w-full h-auto"
+								height={1080}
+								src={"/assets/images/logo-barakah.png"}
+								width={1920}
+							/>
+						</div>
+					)}
 				</div>
 			</div>
 
-			<div className="fixed inset-x-0 top-0 mt-12 flex h-32 w-full justify-center gap-8 p-10">
+			<div className="fixed inset-x-0 top-0 mt-20 flex h-32 w-full justify-center gap-8 p-10">
 				<Image
 					alt=""
 					className="h-full w-auto"

@@ -11,7 +11,7 @@ export const submitCommentSchema = z.object({
 		.min(1, "Pesan wajib diisi")
 		.max(
 			COMMENT_MAX_MESSAGE_LENGTH,
-			`Pesan tidak boleh lebih dari ${COMMENT_MAX_MESSAGE_LENGTH}`,
+			`Pesan tidak boleh lebih dari ${COMMENT_MAX_MESSAGE_LENGTH} karakter`,
 		),
 });
 
