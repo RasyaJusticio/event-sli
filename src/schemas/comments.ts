@@ -8,8 +8,11 @@ export const submitCommentSchema = z.object({
 	name: z.string().max(COMMENT_MAX_NAME_LENGTH).optional().default("Anonymous"),
 	message: z
 		.string()
-		.min(1, "Message cannot be empty")
-		.max(COMMENT_MAX_MESSAGE_LENGTH),
+		.min(1, "Pesan wajib diisi")
+		.max(
+			COMMENT_MAX_MESSAGE_LENGTH,
+			`Pesan tidak boleh lebih dari ${COMMENT_MAX_MESSAGE_LENGTH}`,
+		),
 });
 
 export type SubmitCommentSchemaInput = z.input<typeof submitCommentSchema>;
