@@ -30,30 +30,31 @@ export default function LEDMain() {
 
 			<div className="">
 				<div className="flex flex-col justify-center items-center max-w-1/2 mx-auto gap-12">
-					{data?.comment && (
+					{data?.comment ? (
 						<>
 							<h2
-								className={`text-center text-3xl font-extrabold text-primary [text-shadow:1px_1px_1px_rgba(0,0,0,0.5),-1px_-1px_1px_rgba(0,0,0,0.5)] ${sunlifeND.className}`}
+								className={`text-center text-5xl font-extrabold text-primary shadow-primary [text-shadow:-2px_0px_1px_rgba(0,0,0,0.6),0_0_2px_] ${sunlifeND.className}`}
 							>
-								Lorem Ipsum
+								{data.comment.name}
 							</h2>
-							<p className="text-center text-4xl uppercase">
-								{
-									"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur est at lacinia cursus. Nulla ac congue lacus. Duis non tortor malesuada, imperdiet justo at, euismod libero. Fusce laoreet nulla quis neque feugiat, sed commodo felis faucibus. Vestibulum venenatis porttitor arcu. "
-								}
+							<p className="text-center text-6xl uppercase">
+								{data.comment.message}
 							</p>
 						</>
+					) : (
+						<></>
 					)}
-					<h2
-						className={`text-center text-4xl font-extrabold text-primary [text-shadow:1px_1px_1px_rgba(0,0,0,0.5),-1px_-1px_1px_rgba(0,0,0,0.5)] ${sunlifeND.className}`}
+					{/* <h2
+						className={`text-center text-5xl font-extrabold text-primary shadow-primary [text-shadow:-2px_0px_1px_rgba(0,0,0,0.6),0_0_2px_] ${sunlifeND.className}`}
 					>
 						Lorem Ipsum
 					</h2>
-					<p className="text-center text-6xl uppercase">
-						{
-							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras efficitur est at lacinia cursus. Nulla ac congue lacus. Duis non tortor malesuada, imperdiet justo at, euismod libero. Fusce laoreet nulla quis neque feugiat, sed commodo felis faucibus. Vestibulum venenatis porttitor arcu. "
-						}
-					</p>
+					<p className="text-center text-6xl uppercase tracking-tighter">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras
+						efficitur est at lacinia cursus. Nulla ac congue lacus. Duis non
+						tortor malesuada, imperdiet justo at, euismod libero. Fusce laoreet
+						nulla quis neque feugiat, sed commodo felis faucibus.
+					</p> */}
 				</div>
 			</div>
 

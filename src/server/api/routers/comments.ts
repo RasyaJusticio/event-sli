@@ -14,13 +14,23 @@ import { ROTATION_SECONDS } from "@/utils/constants";
 async function advanceRotation(db: PrismaClient) {
 	const now = new Date();
 
-	const next = await db.comment.findFirst({
+	// Try APPROVED first (oldest first, FIFO)
+	let next = await db.comment.findFirst({
 		where: { status: "APPROVED" },
 		orderBy: { createdAt: "asc" },
 	});
 
+	// Fallback: if no APPROVED comments, cycle through SHOWN ones
+	// Re-show oldest SHOWN comment
 	if (!next) {
-		// Queue empty — clear rotation state
+		next = await db.comment.findFirst({
+			where: { status: "SHOWN" },
+			orderBy: { shownAt: "asc" }, // oldest shown = shown longest ago
+		});
+	}
+
+	if (!next) {
+		// Truly empty — no comments at all yet
 		await db.rotationState.updateMany({
 			data: { currentCommentId: null, displayUntil: null },
 		});
@@ -30,28 +40,19 @@ async function advanceRotation(db: PrismaClient) {
 	const displayUntil = new Date(now.getTime() + ROTATION_SECONDS * 1000);
 
 	await db.$transaction([
+		// Mark current comment as SHOWN (no-op if it was already SHOWN)
 		db.comment.update({
 			where: { id: next.id },
 			data: { status: "SHOWN", shownAt: now },
 		}),
 		db.rotationState.upsert({
 			where: { id: "singleton" },
-			create: {
-				id: "singleton",
-				currentCommentId: next.id,
-				displayUntil,
-			},
-			update: {
-				currentCommentId: next.id,
-				displayUntil,
-			},
+			create: { id: "singleton", currentCommentId: next.id, displayUntil },
+			update: { currentCommentId: next.id, displayUntil },
 		}),
 	]);
 
-	return {
-		comment: next,
-		displayUntil,
-	};
+	return { comment: next, displayUntil };
 }
 
 // ─── Router ───────────────────────────────────────────────────────────────────
