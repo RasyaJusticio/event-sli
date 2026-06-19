@@ -14,11 +14,11 @@ const Button: React.FC<Props> = ({
 }) => {
 	return (
 		<button
-			className="cursor-pointer rounded-lg bg-linear-to-r bg-primary from-primary to-primary-2 px-4 py-3 font-bold text-white uppercase tracking-wider shadow transition-all hover:brightness-95 active:scale-95"
+			className="flex items-center justify-center cursor-pointer rounded-lg bg-linear-to-r bg-primary from-primary to-primary-2 px-4 py-3 font-bold text-white uppercase tracking-wider shadow transition-all hover:brightness-95 active:scale-95"
 			disabled={disabled || loading}
 			{...props}
 		>
-			{loading ? <LoaderCircle /> : children}
+			{loading ? <LoaderCircle className="animate-spin" /> : children}
 		</button>
 	);
 };

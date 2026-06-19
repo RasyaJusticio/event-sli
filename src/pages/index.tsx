@@ -11,15 +11,25 @@ import {
 import { api } from "@/utils/api";
 import Button from "@/components/ui/button";
 import Image from "next/image";
+import { Check } from "lucide-react";
+import { useState } from "react";
+import { cn } from "@/utils/cn";
 
 export default function Home() {
-	const submitComment = api.comments.submit.useMutation();
+	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
 	const form = useForm<SubmitCommentSchemaInput>({
 		resolver: zodResolver(submitCommentSchema),
 		defaultValues: {
 			name: "",
 			message: "",
+		},
+	});
+
+	const submitComment = api.comments.submit.useMutation({
+		onSuccess: () => {
+			setIsDialogOpen(true);
+			form.reset();
 		},
 	});
 
@@ -99,7 +109,7 @@ export default function Home() {
 						)}
 					</label>
 
-					<p className="text-neutral-600 text-xs">
+					<p className="text-neutral-600 text-xs text-center">
 						Setiap pesan harus melalui proses review sebelum bisa ditampilkan di
 						layar
 					</p>
@@ -107,6 +117,30 @@ export default function Home() {
 						Kirim
 					</Button>
 				</form>
+			</div>
+
+			<div
+				className={cn(
+					"fixed inset-0 z-20 flex justify-center items-center bg-black/60 opacity-0  transition-opacity",
+					isDialogOpen
+						? "pointer-events-auto opacity-100"
+						: "pointer-events-none",
+				)}
+			>
+				<div className="bg-white border border-primary px-6 py-8 shadow rounded-xl flex flex-col gap-2 w-full max-w-lg">
+					<div className="rounded-full p-4 bg-green-500/50 w-fit h-fit aspect-square mx-auto">
+						<Check size={32} />
+					</div>
+					<p className="text-center font-bold text-2xl tracking-tight">
+						Pesan Anda berhasil dikirim
+					</p>
+
+					<p className="text-center max-w-sm mx-auto mb-4 tracking-wide">
+						Pesan Anda telah kami terima dan akan segera ditampilkan di layar
+					</p>
+
+					<Button onClick={() => setIsDialogOpen(false)}>Oke</Button>
+				</div>
 			</div>
 		</BaseLayout>
 	);
