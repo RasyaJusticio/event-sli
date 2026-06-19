@@ -1,3 +1,4 @@
+import { cn } from "@/utils/cn";
 import { LoaderCircle } from "lucide-react";
 import type React from "react";
 
@@ -14,7 +15,10 @@ const Button: React.FC<Props> = ({
 }) => {
 	return (
 		<button
-			className="flex items-center justify-center cursor-pointer rounded-lg bg-linear-to-r bg-primary from-primary to-primary-2 px-4 py-3 font-bold text-white uppercase tracking-wider shadow transition-all hover:brightness-95 active:scale-95"
+			className={cn(
+				"flex items-center justify-center cursor-pointer rounded-lg bg-linear-to-r bg-primary from-primary to-primary-2 px-4 py-3 font-bold text-white uppercase tracking-wider shadow transition-all hover:brightness-95 active:scale-95",
+				className,
+			)}
 			disabled={disabled || loading}
 			{...props}
 		>
