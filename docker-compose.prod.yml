@@ -1,4 +1,4 @@
-version: "3.9"
+name: sunlife-bmi-2026-sli
 
 services:
   app:
@@ -9,8 +9,6 @@ services:
     environment:
       - NODE_ENV=production
     build: !reset null
-
-  db:
-    restart: unless-stopped
-    env_file:
-      - .env
+    networks:
+      - internal
+      - web
