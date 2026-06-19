@@ -46,21 +46,29 @@ export default function LEDSide() {
 					</h2>
 
 					<div className="flex flex-col w-full gap-4 mt-8 shadow-[0_0_20px_32px_var(--color-primary)] bg-background/90 shadow-background rounded-full overflow-visible">
-						<p className="text-center text-lg font-semibold uppercase tracking-wider">Tata cara mengirim pesan:</p>
+						<p className="text-center text-lg font-semibold uppercase tracking-wider">
+							Tata cara mengirim pesan:
+						</p>
 						<div className="grid grid-cols-3">
 							<div className="flex flex-col items-center">
 								<span className="text-lg font-extrabold">1</span>
-								<p className="text-center  uppercase tracking-tighter">Scan QR</p>
+								<p className="text-center  uppercase tracking-tighter">
+									Scan QR
+								</p>
 							</div>
 
 							<div className="flex flex-col items-center">
 								<span className="text-lg font-extrabold">2</span>
-								<p className="text-center  uppercase tracking-tighter">Ketik Pesan</p>
+								<p className="text-center  uppercase tracking-tighter">
+									Ketik Pesan
+								</p>
 							</div>
 
 							<div className="flex flex-col items-center">
 								<span className="text-lg font-extrabold">3</span>
-								<p className="text-center  uppercase tracking-tighter">Pesan muncul</p>
+								<p className="text-center  uppercase tracking-tighter">
+									Pesan muncul
+								</p>
 							</div>
 						</div>
 					</div>
