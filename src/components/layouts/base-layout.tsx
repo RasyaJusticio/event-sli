@@ -19,35 +19,35 @@ const BaseLayout: React.FC<Props> = ({ className, lightweight, children }) => {
 			{lightweight ? (
 				<>
 					<Image
-						className="fixed top-0 left-0 h-full w-full object-cover -z-10 hidden sm:block"
-						src={"/assets/images/plain-background.webp"}
 						alt=""
-						width={2560}
+						className="fixed top-0 left-0 -z-10 hidden h-full w-full object-cover sm:block"
 						height={1280}
+						src={"/assets/images/plain-background.webp"}
+						width={2560}
 					/>
 					<Image
-						className="fixed top-0 left-0 h-full w-full object-cover -z-10 sm:hidden"
-						src={"/assets/images/plain-background-vert.webp"}
 						alt=""
-						width={2560}
+						className="fixed top-0 left-0 -z-10 h-full w-full object-cover sm:hidden"
 						height={1280}
+						src={"/assets/images/plain-background-vert.webp"}
+						width={2560}
 					/>
 				</>
 			) : (
 				<>
 					<Image
-						className="fixed top-0 left-0 h-full w-full object-cover -z-10 hidden sm:block"
-						src={"/assets/images/plain-background.png"}
 						alt=""
-						width={2560}
+						className="fixed top-0 left-0 -z-10 hidden h-full w-full object-cover sm:block"
 						height={1280}
+						src={"/assets/images/plain-background.png"}
+						width={2560}
 					/>
 					<Image
-						className="fixed top-0 left-0 h-full w-full object-cover -z-10 sm:hidden"
-						src={"/assets/images/plain-background-vert.png"}
 						alt=""
-						width={2560}
+						className="fixed top-0 left-0 -z-10 h-full w-full object-cover sm:hidden"
 						height={1280}
+						src={"/assets/images/plain-background-vert.png"}
+						width={2560}
 					/>
 				</>
 			)}

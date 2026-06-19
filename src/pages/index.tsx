@@ -41,32 +41,32 @@ export default function Home() {
 					saat
 				</p>
 
-				<form className="flex flex-col w-full gap-4 mt-4" onSubmit={onSubmit}>
+				<form className="mt-4 flex w-full flex-col gap-4" onSubmit={onSubmit}>
 					<label className="flex flex-col gap-1">
-						<span className="uppercase tracking-wider font-semibold text-neutral-600 text-xs">
+						<span className="font-semibold text-neutral-600 text-xs uppercase tracking-wider">
 							Nama Anda
 						</span>
 						<input
-							className="border-primary border rounded-lg bg-white/50 px-4 py-2"
+							className="rounded-lg border border-primary bg-white/50 px-4 py-2"
 							{...form.register("name")}
 						/>
 						{form.formState.errors.name && (
-							<span className="text-sm text-red-500">
+							<span className="text-red-500 text-sm">
 								{form.formState.errors.name.message}
 							</span>
 						)}
 					</label>
 
 					<label className="flex flex-col gap-1">
-						<span className="uppercase tracking-wider font-semibold text-neutral-600 text-xs">
+						<span className="font-semibold text-neutral-600 text-xs uppercase tracking-wider">
 							Pesan Anda
 						</span>
 						<textarea
-							className="border-primary border rounded-lg bg-white/50 px-4 py-2"
+							className="rounded-lg border border-primary bg-white/50 px-4 py-2"
 							{...form.register("message")}
 						/>
 						{form.formState.errors.message && (
-							<span className="text-sm text-red-500">
+							<span className="text-red-500 text-sm">
 								{form.formState.errors.message.message}
 							</span>
 						)}
@@ -77,7 +77,7 @@ export default function Home() {
 						layar
 					</p>
 					<button
-						className="cursor-pointer rounded-lg shadow bg-primary hover:brightness-95 active:scale-95 transition-all bg-gradient-to-r from-primary to-primary-2 px-4 py-3 text-white font-bold uppercase tracking-wider"
+						className="cursor-pointer rounded-lg bg-gradient-to-r bg-primary from-primary to-primary-2 px-4 py-3 font-bold text-white uppercase tracking-wider shadow transition-all hover:brightness-95 active:scale-95"
 						disabled={submitComment.isPending}
 						type="submit"
 					>

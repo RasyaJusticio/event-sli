@@ -1,12 +1,12 @@
 "use client";
 
-import Head from "next/head";
-import BaseLayout from "@/components/layouts/base-layout";
-import { api } from "@/utils/api";
-import { useForm } from "react-hook-form";
-import { adminLoginSchema, type AdminLoginSchema } from "@/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Head from "next/head";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import BaseLayout from "@/components/layouts/base-layout";
+import { type AdminLoginSchema, adminLoginSchema } from "@/schemas/auth.schema";
+import { api } from "@/utils/api";
 
 export default function LEDMain() {
 	const router = useRouter();

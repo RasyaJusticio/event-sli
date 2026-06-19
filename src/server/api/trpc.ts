@@ -11,9 +11,8 @@ import type { CreateNextContextOptions } from "@trpc/server/adapters/next";
 import jwt from "jsonwebtoken";
 import superjson from "superjson";
 import { ZodError } from "zod";
-
-import { db } from "@/server/db";
 import { env } from "@/env";
+import { db } from "@/server/db";
 
 /**
  * 1. CONTEXT

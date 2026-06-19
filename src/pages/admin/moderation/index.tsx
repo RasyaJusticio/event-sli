@@ -1,9 +1,9 @@
 "use client";
 
 import Head from "next/head";
+import AuthLayout from "@/components/layouts/auth-only";
 import BaseLayout from "@/components/layouts/base-layout";
 import { api } from "@/utils/api";
-import AuthLayout from "@/components/layouts/auth-only";
 
 export default function LEDMain() {
 	const utils = api.useUtils();

@@ -1,12 +1,12 @@
 import { TRPCError } from "@trpc/server";
 import jwt from "jsonwebtoken";
 import { z } from "zod";
+import { env } from "@/env";
 import {
 	adminProcedure,
 	createTRPCRouter,
 	publicProcedure,
 } from "@/server/api/trpc";
-import { env } from "@/env";
 
 export const authRouter = createTRPCRouter({
 	verify: adminProcedure.query(() => ({ authenticated: true })),

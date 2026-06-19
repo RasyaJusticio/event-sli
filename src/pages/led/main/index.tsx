@@ -1,11 +1,11 @@
 "use client";
 
 import Head from "next/head";
-import BaseLayout from "@/components/layouts/base-layout";
-import { api } from "@/utils/api";
-import { sunlifeND } from "@/fonts/Sunlife-ND/Sunlife-ND";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import BaseLayout from "@/components/layouts/base-layout";
+import { sunlifeND } from "@/fonts/Sunlife-ND/Sunlife-ND";
+import { api } from "@/utils/api";
 import { ROTATION_SECONDS } from "@/utils/constants";
 
 export default function LEDMain() {
@@ -87,14 +87,14 @@ export default function LEDMain() {
       `}</style>
 
 			<div>
-				<div className="flex flex-col justify-center items-center max-w-1/2 mx-auto gap-12">
+				<div className="mx-auto flex max-w-1/2 flex-col items-center justify-center gap-12">
 					{displayed ? (
 						<div
-							key={animKey}
 							className="comment-enter flex flex-col items-center gap-12"
+							key={animKey}
 						>
 							<h2
-								className={`text-center text-5xl font-extrabold text-primary shadow-primary [text-shadow:-2px_0px_1px_rgba(0,0,0,0.6),0_0_2px_] ${sunlifeND.className}`}
+								className={`text-center font-extrabold text-5xl text-primary shadow-primary [text-shadow:-2px_0px_1px_rgba(0,0,0,0.6),0_0_2px_] ${sunlifeND.className}`}
 							>
 								{displayed.name}
 							</h2>
@@ -106,24 +106,24 @@ export default function LEDMain() {
 				</div>
 			</div>
 
-			<div className="fixed top-0 inset-x-0 w-full flex justify-center gap-8 mt-12 p-10 h-32">
+			<div className="fixed inset-x-0 top-0 mt-12 flex h-32 w-full justify-center gap-8 p-10">
 				<Image
-					className="h-full w-auto"
-					src={"/assets/images/logo-sunlife.png"}
 					alt=""
-					width={336}
+					className="h-full w-auto"
 					height={97}
+					src={"/assets/images/logo-sunlife.png"}
+					width={336}
 				/>
 				<Image
-					className="h-full w-auto"
-					src={"/assets/images/logo-bank-muamalat.png"}
 					alt=""
-					width={340}
+					className="h-full w-auto"
 					height={102}
+					src={"/assets/images/logo-bank-muamalat.png"}
+					width={340}
 				/>
 			</div>
 
-			<div className="fixed bottom-0 inset-x-0 h-3 bg-black/10 shadow-xl">
+			<div className="fixed inset-x-0 bottom-0 h-3 bg-black/10 shadow-xl">
 				<div
 					className="h-full bg-primary transition-none"
 					style={{ width: `${progress}%` }}
