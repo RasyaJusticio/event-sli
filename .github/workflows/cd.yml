@@ -23,10 +23,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push
+      - name: Build and push runner image
         uses: docker/build-push-action@v6
         with:
           context: .
+          target: runner
           push: true
           tags: |
             rasyabent/sunlife-bmi-2025_sli:latest
@@ -34,6 +35,19 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           # SKIP_ENV_VALIDATION=1 — env secrets not available at build time
+          build-args: |
+            SKIP_ENV_VALIDATION=1
+
+      - name: Build and push migration image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          target: migrate
+          push: true
+          tags: |
+            rasyabent/sunlife-bmi-2025_sli-migrate:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           build-args: |
             SKIP_ENV_VALIDATION=1
 
@@ -46,6 +60,6 @@ jobs:
           script: |
             cd ${{ secrets.VPS_WORK_DIR }}
             docker compose -f docker-compose.yml -f docker-compose.prod.yml pull
-            docker compose -f docker-compose.yml -f docker-compose.prod.yml run --rm app npx prisma migrate deploy
+            docker compose -f docker-compose.yml -f docker-compose.prod.yml run --rm migrate
             docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
             docker image prune -f

@@ -34,6 +34,14 @@ COPY . .
 # DATABASE_URL and other secrets are runtime-only
 RUN SKIP_ENV_VALIDATION=1 pnpm run build
 
+##### MIGRATE
+
+FROM deps AS migrate
+
+COPY . .
+
+CMD ["pnpm", "prisma", "migrate", "deploy"]
+
 ##### RUNNER
 
 FROM --platform=linux/amd64 gcr.io/distroless/nodejs22-debian12 AS runner

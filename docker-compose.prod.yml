@@ -12,3 +12,11 @@ services:
     networks:
       - internal
       - web
+
+  migrate:
+    image: rasyabent/sunlife-bmi-2025_sli-migrate:latest
+    env_file:
+      - .env
+    build: !reset null
+    networks:
+      - internal
