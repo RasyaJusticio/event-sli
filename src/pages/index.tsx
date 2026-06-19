@@ -2,12 +2,11 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import Head from "next/head";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import BaseLayout from "@/components/layouts/base-layout";
 import {
-	submitCommentSchema,
 	type SubmitCommentSchemaInput,
+	submitCommentSchema,
 } from "@/schemas/comments";
 import { api } from "@/utils/api";
 
@@ -27,7 +26,7 @@ export default function Home() {
 	});
 
 	return (
-		<BaseLayout>
+		<BaseLayout lightweight>
 			<Head>
 				<title>Submit your comment</title>
 				<meta content="Comment your thoughts" name="description" />
