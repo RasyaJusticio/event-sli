@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  app:
+    image: rasyabent/sunlife-bmi-2025_sli:latest
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+    build: !reset null
+
+  db:
+    restart: unless-stopped
+    env_file:
+      - .env
