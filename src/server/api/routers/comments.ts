@@ -1,16 +1,13 @@
+import { TRPCError } from "@trpc/server";
+import { z } from "zod";
+import type { PrismaClient } from "#/generated/prisma";
+import { submitCommentSchema } from "@/schemas/comments";
 import {
 	adminProcedure,
 	createTRPCRouter,
 	publicProcedure,
 } from "@/server/api/trpc";
-import { TRPCError } from "@trpc/server";
-import {
-	COMMENT_MAX_NAME_LENGTH,
-	COMMENT_MAX_MESSAGE_LENGTH,
-	ROTATION_SECONDS,
-} from "@/utils/constants";
-import { z } from "zod";
-import type { PrismaClient } from "generated/prisma";
+import { ROTATION_SECONDS } from "@/utils/constants";
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -59,19 +56,7 @@ async function advanceRotation(db: PrismaClient) {
 export const commentsRouter = createTRPCRouter({
 	// ── PUBLIC: submit a comment ──────────────────────────────────────────────
 	submit: publicProcedure
-		.input(
-			z.object({
-				name: z
-					.string()
-					.max(COMMENT_MAX_NAME_LENGTH)
-					.optional()
-					.default("Anonymous"),
-				message: z
-					.string()
-					.min(1, "Message cannot be empty")
-					.max(COMMENT_MAX_MESSAGE_LENGTH),
-			}),
-		)
+		.input(submitCommentSchema)
 		.mutation(async ({ ctx, input }) => {
 			const comment = await ctx.db.comment.create({
 				data: {

@@ -45,7 +45,7 @@ export const api = createTRPCNext<AppRouter>({
 					 */
 					transformer: superjson,
 					url: `${getBaseUrl()}/api/trpc`,
-          
+
 					headers() {
 						const token = getAdminToken();
 						return token ? { Authorization: `Bearer ${token}` } : {};
