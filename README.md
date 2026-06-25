@@ -80,10 +80,33 @@ pnpm run start
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ```
 
+## Routes
+
+### Public Routes
+
+| Route       | Description                                      |
+| ----------- | ------------------------------------------------ |
+| `/`         | Submit messages to be displayed during the event |
+| `/led/main` | Main LED display showing approved messages       |
+| `/led/side` | Secondary LED display for side screens           |
+
+### Admin Routes
+
+| Route               | Description                           |
+| ------------------- | ------------------------------------- |
+| `/admin/login`      | Administrator login                   |
+| `/admin/moderation` | Review and approve submitted messages |
+
+### API Routes
+
+| Route         | Description                               |
+| ------------- | ----------------------------------------- |
+| `/api/trpc/*` | Application API endpoints powered by tRPC |
+
 ## Credits
 
 Developed by [RasyaJusticio](https://github.com/rasyajusticio).
 
 ## License
 
-This project is licensed under [GNU AGPLv3](./LICENSE.md)
+This project is licensed under [GNU AGPLv3](./LICENSE)
