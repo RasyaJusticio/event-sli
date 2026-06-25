@@ -103,6 +103,16 @@ docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 | ------------- | ----------------------------------------- |
 | `/api/trpc/*` | Application API endpoints powered by tRPC |
 
+## Project Story
+
+This project was built under an extremely tight deadline for a live event.
+
+The initial request arrived in the morning, and the system was expected to be operational the same night. The primary goal was straightforward: allow event participants to submit messages, have moderators review them, and display approved messages on LED screens during the event.
+
+Given the time constraints, the focus was on delivering a reliable end-to-end workflow rather than building a feature-complete platform. The resulting system successfully supported message submission, moderation, and real-time display throughout the event.
+
+There are many areas that could be improved and expanded in future iterations, but the project achieved its purpose: providing a working solution when it was needed most.
+
 ## Credits
 
 Developed by [RasyaJusticio](https://github.com/rasyajusticio).
