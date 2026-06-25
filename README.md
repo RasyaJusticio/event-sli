@@ -1,29 +1,89 @@
-# Create T3 App
+# Event SLI
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+## Description
 
-## What's next? How do I make an app with this?
+Event SLI is a social live interaction platform designed for events.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+## Tech Stack
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+- Next.js
+- Prisma
+- Tailwind CSS
+- TypeScript
+- tRPC
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+### Notable Libraries
 
-## Learn More
+- React Hook Form
+- TanStack Query
+- Zod
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## Quick Start
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+### Prerequisites
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+- Node.js 18+
+- PNPM
 
-## How do I deploy this?
+### Installation
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+```bash
+# Clone the repository
+git clone https://github.com/RasyaJusticio/event-sli.git
+
+# Enter the project directory
+cd event-sli
+
+# Install dependencies
+pnpm install
+
+# Configure environment variables
+cp .env.example .env
+
+# Start the development server
+pnpm dev
+```
+
+## Environment Variables
+
+The following environment variables are required. Refer to `.env.example` for additional details.
+
+```env
+JWT_SECRET=
+ADMIN_SECRET=
+DATABASE_URL=
+```
+
+## Development
+
+Start the development server:
+
+```bash
+pnpm run dev
+```
+
+Build the application:
+
+```bash
+pnpm run build
+```
+
+Start the production server:
+
+```bash
+pnpm run start
+```
+
+## Docker
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+```
+
+## Credits
+
+Developed by [RasyaJusticio](https://github.com/rasyajusticio).
+
+## License
+
+This project is licensed under [GNU AGPLv3](./LICENSE.md)
